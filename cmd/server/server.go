@@ -40,14 +40,19 @@ func main() {
 	})
 
 	// Inicia o servidor
-	apiURL := configs.URL_BASE + ":" + configs.WebServerPort + "/cep"
-	log.Printf("API está disponível em: %s", apiURL)
 
 	if configs.ENVIRONMENT == "dev" {
+		apiURL := configs.URL_BASE + ":" + configs.WebServerPort + "/cep"
+		log.Printf("API está disponível em: %s", apiURL)
+
 		log.Printf("API Swagger está disponível em: %s", configs.URL_BASE+":"+configs.WebServerPort+"/docs/index.html")
 
 		r.Get("/docs/*", httpSwagger.Handler(httpSwagger.URL(configs.URL_BASE+":"+configs.WebServerPort+"/docs/doc.json")))
 		http.ListenAndServe(fmt.Sprintf(":%s", configs.WebServerPort), r)
+	}
+	if configs.ENVIRONMENT == "prod" {
+		apiURL := configs.URL_BASE + "/cep"
+		log.Printf("API está disponível em: %s", apiURL)
 	}
 
 }
