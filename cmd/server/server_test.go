@@ -8,8 +8,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/GiovaniGitHub/cpf-weather/infra/webserver/handlers"
-	"github.com/GiovaniGitHub/cpf-weather/internal/entity"
+	"github.com/GiovaniGitHub/cep-weather/infra/webserver/handlers"
+	"github.com/GiovaniGitHub/cep-weather/internal/entity"
 )
 
 func TestGetTemperatureEndpoint(t *testing.T) {

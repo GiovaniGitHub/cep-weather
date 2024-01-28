@@ -6,6 +6,8 @@ import (
 
 type Conf struct {
 	WebServerPort string `mapstructure:"WEB_SERVER_PORT"`
+	URL_BASE      string `mapstructure:"URL_BASE"`
+	ENVIRONMENT   string `mapstructure:"ENVIRONMENT"`
 }
 
 func LoadConfig(path string) (*Conf, error) {

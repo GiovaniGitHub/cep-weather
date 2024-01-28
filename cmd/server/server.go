@@ -5,15 +5,15 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/GiovaniGitHub/cpf-weather/configs"
-	_ "github.com/GiovaniGitHub/cpf-weather/docs"
-	"github.com/GiovaniGitHub/cpf-weather/infra/webserver/handlers"
+	"github.com/GiovaniGitHub/cep-weather/configs"
+	_ "github.com/GiovaniGitHub/cep-weather/docs"
+	"github.com/GiovaniGitHub/cep-weather/infra/webserver/handlers"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 	httpSwagger "github.com/swaggo/http-swagger"
 )
 
-// @title           Desafio 2.0 - cpf-weather
+// @title           Desafio 2.0 - cep-weather
 // @version         1.0
 // @description     Fullcycle Pós Go Expert Go Expert
 
@@ -22,7 +22,7 @@ import (
 // @contact.name   Giovani Angelo
 // @contact.email  giovani.angelo@gmail.com
 
-// @host      localhost:8000
+// @host      localhost:8080
 // @BasePath  /
 // @in header
 // @name Authorization
@@ -40,12 +40,14 @@ func main() {
 	})
 
 	// Inicia o servidor
-	apiURL := "http://localhost:" + configs.WebServerPort + "/cep"
+	apiURL := configs.URL_BASE + ":" + configs.WebServerPort + "/cep"
 	log.Printf("API está disponível em: %s", apiURL)
 
-	// Inicia o Swagger
-	log.Printf("API Swagger está disponível em: %s", "http://localhost:"+configs.WebServerPort+"/docs/index.html")
+	if configs.ENVIRONMENT == "dev" {
+		log.Printf("API Swagger está disponível em: %s", configs.URL_BASE+":"+configs.WebServerPort+"/docs/index.html")
 
-	r.Get("/docs/*", httpSwagger.Handler(httpSwagger.URL("http://localhost:"+configs.WebServerPort+"/docs/doc.json")))
-	http.ListenAndServe(fmt.Sprintf(":%s", configs.WebServerPort), r)
+		r.Get("/docs/*", httpSwagger.Handler(httpSwagger.URL(configs.URL_BASE+":"+configs.WebServerPort+"/docs/doc.json")))
+		http.ListenAndServe(fmt.Sprintf(":%s", configs.WebServerPort), r)
+	}
+
 }

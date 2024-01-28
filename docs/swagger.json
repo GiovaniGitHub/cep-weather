@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
         "description": "Fullcycle Pós Go Expert Go Expert",
-        "title": "Desafio 2.0 - cpf-weather",
+        "title": "Desafio 2.0 - cep-weather",
         "termsOfService": "http://swagger.io/terms/",
         "contact": {
             "name": "Giovani Angelo",
@@ -10,7 +10,7 @@
         },
         "version": "1.0"
     },
-    "host": "localhost:8000",
+    "host": "localhost:8080",
     "basePath": "/",
     "paths": {
         "/cep/{cep}": {
