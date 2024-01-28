@@ -54,7 +54,7 @@ URL_BASE=http://localhost
 
 ### Ambiente de Produção
 
-1. Em producao a aplicacao esta rodando no Google Cloud Run.
+1. Em produção a aplicação esta rodando no Google Cloud Run.
 2. Segue um teste possivel
 
 ```bash
@@ -64,3 +64,8 @@ Onde a saída possível é:
 ```json
 {"temp_C":"28","temp_F":"82.40","temp_K":"301.00"}
 ```
+
+**Obs.**
+- Caso queira subir a aplicação em usa conta no Google Cloud Run
+é necessário modificar o Dockerfile e setar o valor da porta para 
+expor a aplicação (que geralmente é a porta 8080)
