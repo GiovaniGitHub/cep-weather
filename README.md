@@ -19,7 +19,7 @@ O sistema em Go que receba um CEP, identifica a cidade e retorna o clima atual (
 **Exemplo**
 ```bash
 WEB_SERVER_PORT=8080
-ENVIRONMENT=dev
+ENVIRONMENT=development
 URL_BASE=http://localhost
 ```
 
@@ -54,12 +54,13 @@ URL_BASE=http://localhost
 
 ### Ambiente de Produção
 
-1. [Instruções específicas para o ambiente de produção.]
-
-## Testes Automatizados
-
-Os testes automatizados estão localizados no diretório `/tests`. Execute os testes da seguinte maneira:
+1. Em producao a aplicacao esta rodando no Google Cloud Run.
+2. Segue um teste possivel
 
 ```bash
-cd seu-projeto/tests
-go test -v
+    curl -H "Content-Type: application/json" https://cep-weather-prqp4ppyua-uc.a.run.app/cep/70070080
+```
+Onde a saída possível é:
+```json
+{"temp_C":"28","temp_F":"82.40","temp_K":"301.00"}
+```
