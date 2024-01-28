@@ -69,3 +69,4 @@ Onde a saída possível é:
 - Caso queira subir a aplicação em usa conta no Google Cloud Run
 é necessário modificar o Dockerfile e setar o valor da porta para 
 expor a aplicação (que geralmente é a porta 8080)
+- Também altere o ENVIRONMENT no .env para _production_
