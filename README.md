@@ -52,7 +52,30 @@ URL_BASE=http://localhost
     make run-docker # Roda o projeto
 ```
 
-### Ambiente de Produção
+### Rodar com Docker Compose
+ - Requisitos basicos:
+   - Docker
+
+```bash
+    docker compose -f docker-compose.yml up -d # Roda o projeto # Cria a imagem docker do projeto
+```
+
+
+### Teste da API
+
+#### Usando CURL
+
+| Comando | Resultado                             |
+|---------|-----------------------------------------|
+| curl -X 'GET' 'http://localhost:8080/cep/70070080' -H 'accept: application/json' | {"temp_C":"36","temp_F":"96.80","temp_K":"309.00"} |
+| curl -X 'GET' 'http://localhost:8080/cep/7007008A' -H 'accept: application/json' | invalid zipcode |
+| curl -X 'GET' 'http://localhost:8080/cep/70070081' -H 'accept: application/json' | can not found zipcode |
+
+#### Usando Swagger
+- Acessar: http://localhost:8080/docs/index.html
+
+
+### Aplicação em execução no Google Cloud Run
 
 1. Em produção a aplicação esta rodando no Google Cloud Run.
 2. Segue um teste possivel
